@@ -9,9 +9,9 @@ class Usuarios(db.Model):
     name = db.Column(db.String(50),  nullable=False)
     email = db.Column(db.String(60),  unique=True, nullable=False)
     password_hash = db.Column(db.String(100),  nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.now(timezone.utc))
     def __repr__(self):
-        return f'<Usuário {self.nome}>'
+        return f'<Usuário {self.username}>'
     
 class Postagens(db.Model):
     __tablename__ = 'postagens'
@@ -20,9 +20,9 @@ class Postagens(db.Model):
     title = db.Column(db.String(50), nullable=False)
     content = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.String(255),  nullable=False)
-    created_at = Column(DateTime, default=datetime(timezone.utc))
+    created_at = Column(DateTime, default=datetime.now(timezone.utc))
     def __repr__(self):
-        return f'<Usuário {self.nome}>'
+        return f'<Postagens {self.title}>'
 
 class Avaliacoes(db.Model):
     __tablename__ = 'avaliacoes'
@@ -35,9 +35,9 @@ class Avaliacoes(db.Model):
     accessibility_rating = db.Column(db.Integer, nullable=False)
     content = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.String(255),  nullable=False)
-    created_at = Column(DateTime, default=datetime(timezone.utc))
+    created_at = Column(DateTime, default=datetime.now(timezone.utc))
     def __repr__(self):
-        return f'<Usuário {self.nome}>'
+        return f'<Avaliações {self.content}>'
 
 class Comentarios(db.Model):
     __tablename__ = 'comentarios'
@@ -46,15 +46,15 @@ class Comentarios(db.Model):
     user_id= db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
     content = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.String(255),  nullable=False)
-    created_at = Column(DateTime, default=datetime(timezone.utc))
+    created_at = Column(DateTime, default=datetime.now(timezone.utc))
     def __repr__(self):
-        return f'<Usuário {self.nome}>'
+        return f'<Comentários {self.content}>'
 
 class Seguidores(db.Model):
     __tablename__ = 'seguidores'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     follower_id= db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
     followed_id= db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
-    created_at = Column(DateTime, default=datetime(timezone.utc))
+    created_at = Column(DateTime, default=datetime.now(timezone.utc))
     def __repr__(self):
-        return f'<Usuário {self.nome}>'
+        return f'<Seguidores {self.id}>'

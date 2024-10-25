@@ -3,12 +3,12 @@ from models import Usuarios, Postagens, Avaliacoes, Comentarios, Seguidores
 from app import app, db
 
 
+
 #Home
 @app.route('/')
 def index():
-    ''' Exibe a página inicial.
-    Rota para Registro de Usuário '''
-    pass
+    ''' Exibe a página inicial, o feed.'''
+    return render_template('index.html')
 
 # Registro de user
 @app.route('/register')
