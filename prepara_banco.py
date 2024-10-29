@@ -24,8 +24,8 @@ cursor.execute("USE `viajuntos`;")
 
 # criando tabelas
 TABLES = {}
-TABLES['Usuarios'] = ('''
-      CREATE TABLE `usuarios` (
+TABLES['Users'] = ('''
+      CREATE TABLE `users` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
       `username` varchar(25) NOT NULL,
       `name` varchar(50) NOT NULL, 
@@ -34,57 +34,114 @@ TABLES['Usuarios'] = ('''
       PRIMARY KEY (`id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
-TABLES['Postagens'] = ('''
-      CREATE TABLE `postagens` (
-      `id` int(11) NOT NULL AUTO_INCREMENT,
-      `user_id` int(11) NOT NULL,                
-      `title` varchar(50) NOT NULL,
-      `content` text NOT NULL, 
+TABLES['Continents'] = ('''
+      CREATE TABLE `continents`(
+      `id` int(2) NOT NULL AUTO_INCREMENT,
+      `name` varchar(25) NOT NULL,
+      PRIMARY KEY (`id`)   
+      )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
+
+TABLES['Subcontinents'] = ('''
+      CREATE TABLE `subcontinents`(
+      `id` int(2) NOT NULL AUTO_INCREMENT,
+      `continent_id` int(2) NOT NULL,
+      `name` varchar(25) NOT NULL,
+      PRIMARY KEY (`id`),
+      FOREIGN KEY (`continent_id`) REFERENCES `continents`(`id`) ON DELETE CASCADE
+      )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
+
+TABLES['Country'] = ('''
+      CREATE TABLE `country` (
+      `id` int(4) NOT NULL AUTO_INCREMENT,
+      `name` varchar(25) NOT NULL,               
+      `continent_id` int(2) NOT NULL,
+      `subcontinent_id` int(2) NOT NULL,
       `image_url` varchar(255) NOT NULL,
-      `created_at` DATETIME,
-      PRIMARY KEY (`id`)
-      FOREIGN KEY (`user_id`) REFERENCES `usuarios`(`id`) ON DELETE CASCADE
+      PRIMARY KEY (`id`),
+      FOREIGN KEY (`continent_id`) REFERENCES `continents`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`subcontinent_id`) REFERENCES `subcontinents`(`id`) ON DELETE CASCADE               
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
+
+TABLES['State/Province'] = ('''
+      CREATE TABLE `state` (
+      `id` int(8) NOT NULL AUTO_INCREMENT,
+      `name` varchar(25) NOT NULL,               
+      `continent_id` int(2) NOT NULL,
+      `subcontinent_id` int(2) NOT NULL,
+      `country_id` int(4) NOT NULL,
+      PRIMARY KEY (`id`),
+      FOREIGN KEY (`continent_id`) REFERENCES `continents`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`subcontinent_id`) REFERENCES `subcontinents`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`country_id`) REFERENCES `country`(`id`) ON DELETE CASCADE,                            
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
+
+TABLES['City/Village'] = ('''
+      CREATE TABLE `city` (
+      `id` int(12) NOT NULL AUTO_INCREMENT,
+      `name` varchar(25) NOT NULL,               
+      `continent_id` int(2) NOT NULL,
+      `subcontinent_id` int(2) NOT NULL,
+      `country_id` int(4) NOT NULL,
+      `state_id`int(8) NOT NULL,                  
+      PRIMARY KEY (`id`),
+      FOREIGN KEY (`continent_id`) REFERENCES `continents`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`subcontinent_id`) REFERENCES `subcontinents`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`country_id`) REFERENCES `country`(`id`) ON DELETE CASCADE,                            
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
+
+TABLES['Place'] = ('''
+      CREATE TABLE `place` (
+      `id` int(16) NOT NULL AUTO_INCREMENT,
+      `name` varchar(25) NOT NULL,               
+      `continent_id` int(2) NOT NULL,
+      `subcontinent_id` int(2) NOT NULL,
+      `country_id` int(4) NOT NULL,
+      `state_id` int(8) NOT NULL,
+      `city_id` int(12) NOT NULL,                 
+      PRIMARY KEY (`id`),
+      FOREIGN KEY (`continent_id`) REFERENCES `continents`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`subcontinent_id`) REFERENCES `subcontinents`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`country_id`) REFERENCES `country`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`state_id`) REFERENCES `state`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`city_id`) REFERENCES `city`(`id`) ON DELETE CASCADE,                            
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
 TABLES['Avaliacoes'] = ('''
       CREATE TABLE `avaliacoes` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
-      `post_id` int(100) NOT NULL,
+      `continent_id` int(2) NOT NULL,
+      `subcontinent_id` int(2) NOT NULL,
+      `country_id` int(4) NOT NULL,
+      `state_id` int(8) NOT NULL, 
+      `city_id` int(12) NOT NULL,
+      `place_id` int(16) NOT NULL,                                                
       `user_id` int(11) NOT NULL,                
       `security_rating` int(1) NOT NULL,
       `solo_woman_rating` int(1) NOT NULL,
       `hospitality_rating` int(1) NOT NULL,
       `accessibility_rating` int(1) NOT NULL,                 
       `content` text NOT NULL, 
-      `image_url` varchar(255) NOT NULL,
       `created_at` DATETIME,
       PRIMARY KEY (`id`),
-      FOREIGN KEY (`post_id`) REFERENCES `postagens`(`id`) ON DELETE CASCADE,
-      FOREIGN KEY (`user_id`) REFERENCES `usuarios`(`id`) ON DELETE CASCADE
+      FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+      FOREIGN KEY (`continent_id`) REFERENCES `continents`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`subcontinent_id`) REFERENCES `subcontinents`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`country_id`) REFERENCES `country`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`state_id`) REFERENCES `state`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`place_id`) REFERENCES `place`(`id`) ON DELETE CASCADE,                    
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
 TABLES['Comentarios'] = ('''
       CREATE TABLE `comentarios` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
-      `post_id` int(11) NOT NULL,
+      `place_id` int(16) NOT NULL,
       `user_id` int(11) NOT NULL,
       `content` text NOT NULL,
       `image_url` varchar(255) NOT NULL,              
       `created_at` DATETIME,
       PRIMARY KEY (`id`),
-      FOREIGN KEY (`post_id`) REFERENCES `postagens`(`id`) ON DELETE CASCADE,
+      FOREIGN KEY (`place_id`) REFERENCES `place`(`id`) ON DELETE CASCADE,
       FOREIGN KEY (`user_id`) REFERENCES `usuarios`(`id`) ON DELETE CASCADE
-      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
-
-TABLES['Seguidores'] = ('''
-      CREATE TABLE `seguidores` (
-      `id` int(11) NOT NULL AUTO_INCREMENT,
-      `follower_id` int(100) NOT NULL,
-      `followed_id` int(100) NOT NULL,          
-      `created_at` DATETIME,
-      PRIMARY KEY (`id`),
-      FOREIGN KEY (`follower_id`) REFERENCES `usuarios`(`id`) ON DELETE CASCADE,
-      FOREIGN KEY (`followed_id`) REFERENCES `usuarios`(`id`) ON DELETE CASCADE
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
 
@@ -102,16 +159,68 @@ for tabela_nome in TABLES:
             print('OK')
 
 # inserindo usuarios
-usuario_sql = 'INSERT INTO usuarios (username, nome, email, password_hash) VALUES (%s, %s, %s, %s)'
-usuarios = [
+user_sql = 'INSERT INTO users (username, name, email, password_hash) VALUES (%s, %s, %s, %s)'
+users = [
       ("vicotira", "Victória Rocha", "victoria_rocha_26@hotmail.com", "123456"),
 ]
-cursor.executemany(usuario_sql, usuarios)
+cursor.executemany(user_sql, users)
 
-cursor.execute('select * from viajuntos.usuarios')
-print(' -------------  Usuários:  -------------')
+cursor.execute('select * from viajuntos.users')
+print(' -------------  Users:  -------------')
 for user in cursor.fetchall():
     print(user[1])
+
+#inserindo continentes
+continent_sql = 'INSERT INTO continents (name) VALUES (%s, %s, %s, %s)'
+continents = [
+      ("Africa"),
+      ("America"),
+      ("Asia"),
+      ("Europe"),
+      ("Oceania"),
+]
+cursor.executemany(continent_sql,continents)
+
+cursor.execute('select * from viajuntos.continents')
+print(' -------------  Continents:  -------------')
+for continent in cursor.fetchall():
+    print(continents[1])
+
+# inserindo subcontinentes
+subcontinent_sql = 'INSERT INTO subcontinents (continent_id, name) VALUES (%d, %s)'
+subcontinents = [
+      (1, "Northern Africa"),
+      (1, "West Africa"),
+      (1, "Central Africa"),
+      (1, "East Africa"),
+      (1, "Southern Africa"),
+      (2, "North America"),
+      (2, "Central America"),
+      (2, "South America"),
+      (3, "Central Asia"),
+      (3, "Middle Asia"),
+      (3, "South Asia"),
+      (3, "Southeast Asia"),
+      (3, "East Asia"),
+      (4, "Northern Europe"),
+      (4, "Southern Europe"),
+      (4, "Western Europe"),
+      (4, "Central-Eastern Europe"),
+      (5, "Australasia"),
+      (5, "Melanesia"),
+      (5, "Micronesia"),
+      (5, "Polynesia"),
+]
+cursor.executemany(subcontinent_sql,subcontinents)
+
+cursor.execute('select * from viajuntos.subcontinents')
+print(' -------------  Subcontinents:  -------------')
+for subcontinent in cursor.fetchall():
+    print(subcontinents[1])
+
+# Inserindo países
+
+
 
 
 
