@@ -51,25 +51,19 @@ TABLES['Subcontinents'] = ('''
 TABLES['Country'] = ('''
       CREATE TABLE `country` (
       `id` int(4) NOT NULL AUTO_INCREMENT,
-      `continent_id` int(2) NOT NULL,
       `subcontinent_id` int(2) NOT NULL,
       `name` varchar(100) NOT NULL,               
       `image_url` varchar(255) DEFAULT NULL,
       PRIMARY KEY (`id`),
-      FOREIGN KEY (`continent_id`) REFERENCES `continents`(`id`) ON DELETE CASCADE,
       FOREIGN KEY (`subcontinent_id`) REFERENCES `subcontinents`(`id`) ON DELETE CASCADE               
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
 TABLES['State/Province'] = ('''
       CREATE TABLE `states` (
       `id` int(8) NOT NULL AUTO_INCREMENT,
-      `continent_id` int(2) NOT NULL,
-      `subcontinent_id` int(2) NOT NULL,
       `country_id` int(4) NOT NULL,
       `name` varchar(50) NOT NULL,               
       PRIMARY KEY (`id`),
-      FOREIGN KEY (`continent_id`) REFERENCES `continents`(`id`) ON DELETE CASCADE,
-      FOREIGN KEY (`subcontinent_id`) REFERENCES `subcontinents`(`id`) ON DELETE CASCADE,
       FOREIGN KEY (`country_id`) REFERENCES `country`(`id`) ON DELETE CASCADE                            
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
@@ -77,14 +71,11 @@ TABLES['City/Village'] = ('''
       CREATE TABLE `city` (
       `id` int(12) NOT NULL AUTO_INCREMENT,
       `name` varchar(25) NOT NULL,               
-      `continent_id` int(2) NOT NULL,
-      `subcontinent_id` int(2) NOT NULL,
-      `country_id` int(4) NOT NULL,
       `state_id`int(8) NOT NULL,                  
       PRIMARY KEY (`id`),
       FOREIGN KEY (`continent_id`) REFERENCES `continents`(`id`) ON DELETE CASCADE,
       FOREIGN KEY (`subcontinent_id`) REFERENCES `subcontinents`(`id`) ON DELETE CASCADE,
-      FOREIGN KEY (`country_id`) REFERENCES `country`(`id`) ON DELETE CASCADE                            
+      FOREIGN KEY (`state_id`) REFERENCES `country`(`id`) ON DELETE CASCADE                            
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
 TABLES['Place'] = ('''
@@ -107,11 +98,6 @@ TABLES['Place'] = ('''
 TABLES['Avaliacoes'] = ('''
       CREATE TABLE `avaliacoes` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
-      `continent_id` int(2) NOT NULL,
-      `subcontinent_id` int(2) NOT NULL,
-      `country_id` int(4) NOT NULL,
-      `state_id` int(8) NOT NULL, 
-      `city_id` int(12) NOT NULL,
       `place_id` int(16) NOT NULL,                                                
       `user_id` int(11) NOT NULL,                
       `security_rating` int(1) NOT NULL,
@@ -122,10 +108,6 @@ TABLES['Avaliacoes'] = ('''
       `created_at` DATETIME,
       PRIMARY KEY (`id`),
       FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
-      FOREIGN KEY (`continent_id`) REFERENCES `continents`(`id`) ON DELETE CASCADE,
-      FOREIGN KEY (`subcontinent_id`) REFERENCES `subcontinents`(`id`) ON DELETE CASCADE,
-      FOREIGN KEY (`country_id`) REFERENCES `country`(`id`) ON DELETE CASCADE,
-      FOREIGN KEY (`state_id`) REFERENCES `state`(`id`) ON DELETE CASCADE,
       FOREIGN KEY (`place_id`) REFERENCES `place`(`id`) ON DELETE CASCADE                    
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
 
