@@ -71,14 +71,7 @@ def post_rating():
     '''Envia avaliações para a postagem.'''
     pass
 
-#Comentarios
-@app.route('/post/<post_id>/comment', methods=['POST', ])
-def post_comment():
-    '''Adiciona um comentário à postagem.'''
-    pass
-
-#Seguidores
-@app.route('/follow/<username>')
-def follow():
-    '''Permite que um usuário siga outro.'''
+# Sugerir Local
+@app.route('/place_suggestion')
+def place_suggest():
     pass

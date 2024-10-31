@@ -42,33 +42,32 @@ class State(db.Model):
     name = db.Column(db.String(50),  nullable=False)
     def __repr__(self):
         return f'<Estado/Província: {self.name}>'
-
     
-# classes Cidade/Povoado e Local e avaliações por local
-
+class City(db.Model):
+    __tablename__ = 'city'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    state_id = db.Column(db.Integrer, db.ForeignKey('states.id'),nullable=False)
+    name = db.Column(db.String(50),  nullable=False)
+    def __repr__(self):
+        return f'<Cidade/Povoado: {self.name}>'
+    
+class Place(db.Model):
+    __tablename__ = 'place'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    city_id = db.Column(db.Integrer, db.ForeignKey('city.id'),nullable=False)
+    name = db.Column(db.String(50),  nullable=False)
+    def __repr__(self):
+        return f'<Local: {self.name}>'
 
 class Avaliacoes(db.Model):
     __tablename__ = 'avaliacoes'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id= db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
     place_id= db.Column(db.Integer, db.ForeignKey('lugares.id'), nullable=False)
+    user_id= db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
     security_rating = db.Column(db.Integer, nullable=False)
     solo_woman_rating = db.Column(db.Integer, nullable=False)
     hospitality_rating = db.Column(db.Integer, nullable=False)
     accessibility_rating = db.Column(db.Integer, nullable=False)
     content = db.Column(db.Text, nullable=False)
-    created_at = Column(DateTime, default=datetime.now(timezone.utc))
     def __repr__(self):
         return f'<Avaliações {self.content}>'
-
-class Comentarios(db.Model):
-    __tablename__ = 'comentarios'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    place_id= db.Column(db.Integer, db.ForeignKey('place.id'), nullable=False)
-    user_id= db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    content = db.Column(db.Text, nullable=False)
-    image_url = db.Column(db.String(255),  nullable=False)
-    created_at = Column(DateTime, default=datetime.now(timezone.utc))
-    def __repr__(self):
-        return f'<Comentários {self.content}>'
-
