@@ -95,25 +95,10 @@ TABLES['Avaliacoes'] = ('''
       `hospitality_rating` int(1) NOT NULL,
       `accessibility_rating` int(1) NOT NULL,                 
       `content` text NOT NULL, 
-      `created_at` DATETIME,
       PRIMARY KEY (`id`),
       FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
       FOREIGN KEY (`place_id`) REFERENCES `place`(`id`) ON DELETE CASCADE                    
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
-
-TABLES['Comentarios'] = ('''
-      CREATE TABLE `comentarios` (
-      `id` int(11) NOT NULL AUTO_INCREMENT,
-      `place_id` int(16) NOT NULL,
-      `user_id` int(11) NOT NULL,
-      `content` text NOT NULL,
-      `image_url` varchar(255) NOT NULL,              
-      `created_at` DATETIME,
-      PRIMARY KEY (`id`),
-      FOREIGN KEY (`place_id`) REFERENCES `place`(`id`) ON DELETE CASCADE,
-      FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
-      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
-
 
 for tabela_nome in TABLES:
       tabela_sql = TABLES[tabela_nome]
@@ -196,7 +181,7 @@ for subcontinent in cursor.fetchall():
     print(subcontinents[1])
 
 # Inserindo países
-country_sql = 'INSERT INTO country (continent_id, subcontinent_id, name) VALUES (%s, %s, %s)'
+country_sql = 'INSERT INTO country (continent_id, subcontinent_id, name) VALUES (%s, %s)'
 countries = [
       # Northern Africa
       (1, "Algeria"), 
@@ -347,7 +332,7 @@ print(' -------------  Country:  -------------')
 for country in cursor.fetchall():
     print(countries[2])
 
-states_sql = 'INSERT INTO states (continent_id, subcontinent_id, country_id, name) VALUES (%s, %s, %s, %s)'
+states_sql = 'INSERT INTO states (continent_id, subcontinent_id, country_id, name) VALUES (%s, %s)'
 states = [
      #Brazil
     (107, "Acre"),
@@ -358,6 +343,7 @@ states = [
     (107, "Ceará"),
     (107, "Distrito Federal"),
     (107, "Espírito Santo"),
+    (107, "Goiás")
     (107, "Maranhão"),
     (107, "Mato Grosso"),
     (107, "Mato Grosso do Sul"),
@@ -382,10 +368,68 @@ cursor.executemany(states_sql, states)
 cursor.execute('SELECT * FROM states')
 print(' -------------  States/Province:  -------------')
 for state in cursor.fetchall():
-    print(state)
+    print(states)
 
+cities_sql = 'INSERT INTO states (state_id, name) VALUES (%s, %s)'
+cities = [
+     # --- BRASIL ---
+     (1, "Rio Branco"), # Acre
+     (2, "Maceió"), # Alagoas
+     (3, "Macapá"), # Amapá
+     (4, "Manaus"), # Amazonas
+     (5, "Salvador"), # Bahia
+     (5, "Porto Seguro"),
+     (5, "Recife de Fora"),
+     (5, "Trancoso"),
+     (5, "Arraial D'Ajuda"),
+     (5, "Vila de Caraíva"),
+     (5, "Santa Cruz de Cabrália")
+     (6, "Fortaleza"), # Ceará
+     (6, "Paracuru"),
+     (6, "Beberibe"),
+     (6, "Aracati"),
+     (7, "Brasília"), # DF
+     (8, "Vitória"), # Espirito Santo
+     (9, "Goiânia"), # Goiás
+     (9, "Caldas Novas")
+     (10, "São Luís"), # Maranhão
+     (11, "Cuiabá"), # Mato Grosso
+     (12, "Campo Grande"), # Mato Grosso do Sul
+     (13, "Belo Horizonte"), # Minas Gerais
+     (13, "Extrema"),
+     (13, "Bueno Brandão"),
+     (13, "São Thomé das Letras"),
+     (13, "Três Corações")
+     (14, "Belém"), #Pará
+     (15, "João Pessoa"), #Paraíba
+     (15, "Cabedelo")
+     (16, "Curitiba"), #Paraná
+     (17, "Recife"), #Pernambuco
+     (17, "Porto de Galinhas"),
+     (17, "Olinda"),
+     (17, "Saloá")
+     (18, "Teresina"), #Piauí
+     (19, "Rio de Janeiro"), #Rio de Janeiro
+     (20, "Natal"), #Rio Grande do Norte
+     (20, "São Miguel do Gostoso"),
+     (21, "Porto Alegre"), # Rio Grande do Sul
+     (22, "Porto Velho"), # Rondônia
+     (23, "Boa Vista"), # Roraima
+     (24, "Florianópolis"), # Santa Catarina
+     (25, "São Paulo"), # Sao Paulo
+     (25, "Atibaia"),
+     (25, "Bragança Paulista"),
+     (25, "Campinas"),
+     (26, "Aracaju"), # Sergipe
+     (27, "Palmas"), # Tocantins
+]
 
+cursor.executemany(cities_sql, cities)
 
+cursor.execute('SELECT * FROM cities')
+print(' -------------  Cities:  -------------')
+for city in cursor.fetchall():
+    print(cities)
 
 conn.commit()
 cursor.close()
