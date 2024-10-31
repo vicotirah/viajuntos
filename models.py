@@ -30,7 +30,6 @@ class Subcontinentes(db.Model):
 class Country(db.Model):
     __tablename__ = 'country'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    continent_id = db.Column(db.Integrer, db.ForeignKey('continents.id'),nullable=False)
     subcontinent_id = db.Column(db.Integrer, db.ForeignKey('subcontinents.id'),nullable=False)
     name = db.Column(db.String(50),  nullable=False)
     def __repr__(self):
@@ -39,8 +38,6 @@ class Country(db.Model):
 class State(db.Model):
     __tablename__ = 'states'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    continent_id = db.Column(db.Integrer, db.ForeignKey('continents.id'),nullable=False)
-    subcontinent_id = db.Column(db.Integrer, db.ForeignKey('subcontinents.id'),nullable=False)
     country_id = db.Column(db.Integrer, db.ForeignKey('country.id'),nullable=False)
     name = db.Column(db.String(50),  nullable=False)
     def __repr__(self):
