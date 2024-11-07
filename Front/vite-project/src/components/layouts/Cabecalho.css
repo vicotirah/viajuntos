@@ -1,0 +1,25 @@
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #ff7f50; /* cor similar ao logo */
+  }
+  
+  .header h1 {
+    color: #ffffff;
+    font-size: 24px;
+  }
+  
+  .header nav {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .menu-icon, .profile-icon {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+  }
