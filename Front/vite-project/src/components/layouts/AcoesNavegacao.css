@@ -1,0 +1,15 @@
+.acoes-navegacao {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .icone-navegacao {
+    font-size: 24px;
+    color: #ff6f00;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  

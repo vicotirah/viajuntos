@@ -1,0 +1,9 @@
+.comentario p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .comentario p strong {
+    color: #333;
+  }
+  

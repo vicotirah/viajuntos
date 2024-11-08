@@ -1,0 +1,31 @@
+.perfil-usuario {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .perfil-usuario img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .perfil-usuario p {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .botao-adicionar {
+    background-color: #ff6f00;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  

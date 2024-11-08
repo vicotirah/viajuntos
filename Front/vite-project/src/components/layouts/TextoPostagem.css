@@ -1,0 +1,14 @@
+.texto-postagem h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .texto-postagem p {
+    color: #666;
+    margin: 10px 0;
+  }
+  
+  .texto-postagem p strong {
+    color: #333;
+  }
+  
