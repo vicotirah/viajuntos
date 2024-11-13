@@ -8,7 +8,7 @@ import MenuFiltro from './components/layouts/MenuFiltro';
 // Importação das páginas com o caminho atualizado
 import Home from './views/pages/Home';
 import PostagemDetalhes from './views/pages/PostDetalhes';
-import PerfilUsuario from './views/pages/PaginaUsuario';
+import PerfilUsuario from './components/layouts/PerfilUsuario';
 
 function App() {
   return (

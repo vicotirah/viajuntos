@@ -1,13 +1,13 @@
 // src/pages/Home.jsx
 import React from 'react';
-import Cabeçalho from '../components/layout/Cabeçalho';
-import Logo from '../components/layout/Logo';
-import Postagem from '../components/layout/Postagem';
+import Cabecalho from '../components/layouts/Cabecalho';
+import Logo from '../components/layouts/Logo';
+import Postagem from '../components/layouts/Postagem';
 
 function Home() {
   return (
     <div>
-      <Cabeçalho />
+      <Cabecalho />
       <Logo />
       {/* Exemplo de renderização de uma lista de postagens */}
       <div className="lista-postagens">

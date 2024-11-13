@@ -1,8 +1,7 @@
-// src/pages/PerfilUsuario.jsx
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import PerfilUsuario from '../components/layout/PaginaUsuario';
-import Postagem from '../components/Postagem';
+import PerfilUsuario from '../components/layouts/PerfilUsuario';
+import Postagem from '../components/layouts/Postagem';
 
 function PerfilUsuarioPage() {
   const { userId } = useParams();
