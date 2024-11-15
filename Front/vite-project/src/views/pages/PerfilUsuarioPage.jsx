@@ -1,18 +1,16 @@
 import React from 'react';
 import Cabecalho from '../../components/layouts/Cabecalho';
-import BarraPesquisa from '../../components/layouts/BarraPesquisa';
+import PerfilUsuario from '../../components/layouts/PerfilUsuario';
 import ListaViagens from '../../components/layouts/ListaViagens';
-import MenuFiltro from '../../components/layouts/MenuFiltro';
 
-const Home = () => {
+const PerfilUsuarioPage = () => {
     return (
         <div>
             <Cabecalho />
-            <BarraPesquisa />
-            <MenuFiltro />
+            <PerfilUsuario />
             <ListaViagens />
         </div>
     );
 };
 
-export default Home;
+export default PerfilUsuarioPage;
