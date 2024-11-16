@@ -1,6 +1,28 @@
+.avaliacoes {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333; /* Cor neutra para texto */
+  background-color: #fff; /* Fundo branco para destaque */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+}
+
 .avaliacoes p {
-    margin: 5px 0;
-    color: #ff6f00;
-    font-size: 16px;
-  }
-  
+  margin: 10px 0; /* Espaçamento entre os parágrafos */
+}
+
+.avaliacoes p:first-child {
+  margin-top: 0; /* Remove margem superior do primeiro parágrafo */
+}
+
+.avaliacoes p:last-child {
+  margin-bottom: 0; /* Remove margem inferior do último parágrafo */
+}
+
+.avaliacoes span {
+  font-weight: bold;
+  color: #ff7f50; /* Laranja para realce */
+}

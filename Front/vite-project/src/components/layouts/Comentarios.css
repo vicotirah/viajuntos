@@ -1,14 +1,24 @@
 .comentarios {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .comentarios h3 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
+  background-color: #fff; /* Fundo branco */
+  border: 1px solid #ddd; /* Borda leve */
+  border-radius: 8px; /* Cantos arredondados */
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-top: 20px;
+}
+
+.comentarios h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; /* Texto principal */
+  margin-bottom: 15px; /* Espaço abaixo do título */
+  text-align: center; /* Centraliza o título */
+}
+
+.comentarios .comentario {
+  margin-bottom: 10px; /* Espaçamento entre comentários */
+}
+
+.comentarios .comentario:last-child {
+  margin-bottom: 0; /* Remove o espaçamento do último comentário */
+}

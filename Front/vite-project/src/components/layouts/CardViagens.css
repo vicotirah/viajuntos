@@ -1,24 +1,37 @@
 .card-viagens {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    text-align: center;
-  }
-  
-  .card-viagens img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-  }
-  
-  .card-viagens h3 {
-    margin: 0.75rem 0;
-    color: #333;
-    font-size: 18px;
-  }
-  
-  .card-viagens p {
-    color: #777;
-    margin-bottom: 1rem;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff; /* Fundo branco */
+  border: 1px solid #ddd; /* Borda suave */
+  border-radius: 8px; /* Cantos arredondados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  overflow: hidden; /* Garante que o conteúdo não ultrapasse os cantos arredondados */
+  max-width: 300px; /* Limita o tamanho máximo */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animação ao passar o mouse */
+}
+
+.card-viagens:hover {
+  transform: scale(1.05); /* Aumenta o cartão no hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Realce no hover */
+}
+
+.card-viagens img {
+  width: 100%; /* Imagem ocupa toda a largura do cartão */
+  height: 180px; /* Altura fixa para manter proporção */
+  object-fit: cover; /* Garante que a imagem preencha o espaço */
+}
+
+.card-viagens h3 {
+  margin: 15px 0 5px;
+  font-size: 18px;
+  color: #333; /* Texto primário */
+  text-align: center;
+}
+
+.card-viagens p {
+  margin: 0 0 15px;
+  font-size: 14px;
+  color: #666; /* Texto secundário */
+  text-align: center;
+}

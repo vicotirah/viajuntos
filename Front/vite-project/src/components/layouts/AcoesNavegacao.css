@@ -1,15 +1,25 @@
 .acoes-navegacao {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  .icone-navegacao {
-    font-size: 24px;
-    color: #ff6f00;
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin: 0 10px;
-  }
-  
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.icone-navegacao {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.icone-navegacao:hover {
+  transform: scale(1.1);
+  color: #ff7f50; /* Um tom laranja claro para realce */
+}
+
+.icone-navegacao:focus {
+  outline: none;
+  box-shadow: 0 0 5px #ff7f50;
+}

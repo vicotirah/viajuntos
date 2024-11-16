@@ -1,14 +1,29 @@
 .barra-pesquisa {
-    margin: 1rem auto;
-    width: 80%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .barra-pesquisa input {
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 25px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-  }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.barra-pesquisa input {
+  width: 100%;
+  max-width: 400px; /* Limita a largura máxima */
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 25px; /* Cria cantos arredondados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none; /* Remove o contorno padrão */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.barra-pesquisa input::placeholder {
+  color: #999; /* Cor do placeholder */
+  font-style: italic; /* Estilo do placeholder */
+}
+
+.barra-pesquisa input:focus {
+  border-color: #007bff; /* Cor do destaque ao focar */
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.4);
+}

@@ -3,12 +3,12 @@ import CardViagens from './CardViagens';
 import './ListaViagens.css';
 
 const destinos = [
-  { name: 'Rio de Janeiro', author: 'Matheus Gois', imageUrl: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.melhoresdestinos.com.br%2Fo-que-fazer-no-rio-de-janeiro.html&psig=AOvVaw3_fgfrjSuRe48ZuUfy2z4F&ust=1731109648595000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPjsiJm0y4kDFQAAAAAdAAAAABAE' },
-  { name: 'Nova Iorque', author: 'Victoria Rocha', imageUrl: 'https://www.google.com/imgres?q=nova%20iorque&imgurl=https%3A%2F%2Fdescubraeua.com.br%2Fwp-content%2Fuploads%2F2020%2F06%2Fmanhattan-nova-york-1024x576.jpg&imgrefurl=https%3A%2F%2Fdescubraeua.com.br%2Fnova-york%2Fonde-fica-nova-york%2F&docid=IcdEbDiLNZ9pvM&tbnid=rXDXcgt04diRrM&vet=12ahUKEwjF0rS_tMuJAxWpH7kGHbUiCZUQM3oECFoQAA..i&w=1024&h=576&hcb=2&ved=2ahUKEwjF0rS_tMuJAxWpH7kGHbUiCZUQM3oECFoQAA' },
-  { name: 'Paris', author: 'Pedro Guédes', imageUrl: 'link_da_imagem_3' },
-  { name: 'Lençóis Maranhenses', author: 'Thales Miranda', imageUrl: 'link_da_imagem_4' },
-  { name: 'Salvador', author: 'Julia Silva', imageUrl: 'link_da_imagem_5' },
-  { name: 'Japão', author: 'Vitor Souza', imageUrl: 'link_da_imagem_6' },
+  { name: 'Rio de Janeiro', author: 'Matheus Gois', imageUrl: 'https://plus.unsplash.com/premium_photo-1671211307997-f4f552b0601c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8UklPJTIwREUlMjBKQU5FSVJPfGVufDB8fDB8fHww' },
+  { name: 'Nova Iorque', author: 'Victoria Rocha', imageUrl: 'https://images.unsplash.com/photo-1621693247912-767f47a3c382?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2FsdmFkb3IlMjBiYWhpYXxlbnwwfHwwfHx8MA%3D%3D' },
+  { name: 'Paris', author: 'Pedro Guédes', imageUrl: 'https://lh5.googleusercontent.com/proxy/tg03dNssTCYM790rnvZk0WgSftWf9AbXsFO2_qfGgOF3kKSNb10YF5CgHukbkrsQsbVRPXeL6dFvUA6tAiEY7HzoEdDcEq1NvcqQ-b63jQmHkQqbv5dGOtPi71DZWhV2YafKgu44uTPV_A' },
+  { name: 'Lençóis Maranhenses', author: 'Thales Miranda', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo4uOEBH-uYhsVlMzXRsct6yseifmX90tx7A&s' },
+  { name: 'Salvador', author: 'Julia Silva', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGkY6TcSsvikfVKVbuHX1dxei6bCVQe4C3Bw&s' },
+  { name: 'Japão', author: 'Vitor Souza', imageUrl: 'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8amFwJUMzJUEzb3xlbnwwfHwwfHx8MA%3D%3D' },
 ];
 
 function ListaViagens() {

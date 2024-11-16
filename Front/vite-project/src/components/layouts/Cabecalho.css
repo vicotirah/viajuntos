@@ -1,25 +1,50 @@
 .cabecalho {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #ff7f50; /* cor similar ao logo */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #007bff; /* Cor de fundo primária */
+  color: #fff; /* Texto branco */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+}
+
+.cabecalho h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.cabecalho nav {
+  display: flex;
+  gap: 10px;
+}
+
+.menu-icon, .profile-icon {
+  background-color: #0056b3; /* Tom mais escuro do azul */
+  color: #fff;
+  font-size: 18px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px; /* Botões com bordas arredondadas */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-icon:hover, .profile-icon:hover {
+  background-color: #003d80; /* Destaque no hover */
+}
+
+.menu-icon:active, .profile-icon:active {
+  transform: scale(0.95); /* Efeito de clique */
+}
+
+@media (max-width: 768px) {
+  .cabecalho h1 {
+    font-size: 20px; /* Reduz tamanho do título em telas menores */
   }
-  
-  .header h1 {
-    color: #ffffff;
-    font-size: 24px;
-  }
-  
-  .header nav {
-    display: flex;
-    gap: 1rem;
-  }
-  
+
   .menu-icon, .profile-icon {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: #ffffff;
-    cursor: pointer;
+    font-size: 16px;
+    padding: 6px 10px;
   }
+}

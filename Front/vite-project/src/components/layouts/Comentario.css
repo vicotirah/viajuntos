@@ -1,9 +1,27 @@
+.comentario {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9; /* Fundo claro para contraste */
+  border: 1px solid #ddd; /* Borda leve */
+  border-radius: 8px; /* Cantos arredondados */
+  padding: 10px 15px; /* Espaçamento interno */
+  margin-bottom: 10px; /* Espaçamento entre comentários */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para profundidade */
+  transition: box-shadow 0.3s ease;
+}
+
+.comentario:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Destaque no hover */
+}
+
 .comentario p {
-    margin: 5px 0;
-    color: #666;
-  }
-  
-  .comentario p strong {
-    color: #333;
-  }
-  
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333; /* Texto principal */
+}
+
+.comentario p strong {
+  color: #007bff; /* Destaque no nome */
+  font-weight: bold;
+}
