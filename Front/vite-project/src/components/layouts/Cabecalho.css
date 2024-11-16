@@ -3,12 +3,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #007bff; /* Cor de fundo primária */
-  color: #fff; /* Texto branco */
+  background-color: #fff; /* Cor de fundo primária */
+  color: black; /* Texto branco */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
 }
 
 .cabecalho h1 {
+  font-family:Fredoka;
   font-size: 24px;
   font-weight: bold;
   margin: 0;
@@ -20,18 +21,13 @@
 }
 
 .menu-icon, .profile-icon {
-  background-color: #0056b3; /* Tom mais escuro do azul */
-  color: #fff;
+  color: orange;
   font-size: 18px;
   padding: 8px 12px;
   border: none;
-  border-radius: 5px; /* Botões com bordas arredondadas */
+  border-radius: 5px; 
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-.menu-icon:hover, .profile-icon:hover {
-  background-color: #003d80; /* Destaque no hover */
 }
 
 .menu-icon:active, .profile-icon:active {
