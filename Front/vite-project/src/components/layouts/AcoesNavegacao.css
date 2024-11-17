@@ -16,7 +16,7 @@
 
 .icone-navegacao:hover {
   transform: scale(1.1);
-  color: #ff7f50; /* Um tom laranja claro para realce */
+  color: #ff7f50; 
 }
 
 .icone-navegacao:focus {

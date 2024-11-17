@@ -1,29 +1,29 @@
 .formulario-comentario {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espaçamento entre o campo de entrada e o botão */
+  gap: 10px; 
   margin-top: 15px;
 }
 
 .formulario-comentario input {
-  flex: 1; /* O input ocupa o máximo de espaço disponível */
+  flex: 1; 
   padding: 10px;
   font-size: 14px;
-  border: 1px solid #ccc; /* Borda suave */
-  border-radius: 20px; /* Cantos arredondados */
+  border: 1px solid #ccc; 
+  border-radius: 20px; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  outline: none; /* Remove o contorno padrão */
+  outline: none; 
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .formulario-comentario input::placeholder {
-  color: #999; /* Cor do texto do placeholder */
-  font-style: italic; /* Estilo diferenciado para o placeholder */
+  color: #999; 
+  font-style: italic; 
 }
 
 .formulario-comentario input:focus {
-  border-color: #007bff; /* Destaque ao focar */
-  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3); /* Realce no foco */
+  border-color: #007bff;
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3); 
 }
 
 .formulario-comentario button {
@@ -31,17 +31,17 @@
   font-size: 14px;
   font-weight: bold;
   color: #fff;
-  background-color: #007bff; /* Cor principal */
+  background-color: #007bff; 
   border: none;
-  border-radius: 20px; /* Botão arredondado */
+  border-radius: 20px; 
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .formulario-comentario button:hover {
-  background-color: #0056b3; /* Cor mais escura ao passar o mouse */
+  background-color: #0056b3; 
 }
 
 .formulario-comentario button:active {
-  transform: scale(0.95); /* Efeito de "pressionar" */
+  transform: scale(0.95); 
 }

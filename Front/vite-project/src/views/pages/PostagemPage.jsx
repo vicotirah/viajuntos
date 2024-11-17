@@ -5,7 +5,6 @@ import TextoPostagem from '../../components/layouts/TextoPostagem';
 import Avaliacoes from '../../components/layouts/Avaliacoes';
 import Comentarios from '../../components/layouts/Comentarios';
 import FormularioComentario from '../../components/layouts/FormularioComentario';
-import AcoesNavegacao from '../../components/layouts/AcoesNavegacao';
 
 const PostagemPage = () => {
   return (
@@ -16,7 +15,6 @@ const PostagemPage = () => {
       <Avaliacoes />
       <Comentarios />
       <FormularioComentario />
-      <AcoesNavegacao />
     </div>
   );
 };

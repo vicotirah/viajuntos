@@ -1,6 +1,6 @@
 import React from 'react';
-import CardViagens from './CardViagens';
-import './ListaViagens.css';
+import CardMinhasViagens from './CardMinhasViagens';
+import './MinhasViagens.css';
 
 const destinos = [
   { name: 'Rio de Janeiro', author: 'Matheus Gois', imageUrl: 'https://plus.unsplash.com/premium_photo-1671211307997-f4f552b0601c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8UklPJTIwREUlMjBKQU5FSVJPfGVufDB8fDB8fHww' },
@@ -11,17 +11,17 @@ const destinos = [
   { name: 'Japão', author: 'Vitor Souza', imageUrl: 'https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8amFwJUMzJUEzb3xlbnwwfHwwfHx8MA%3D%3D' },
 ];
 
-function ListaViagens() {
+function MinhasViagens() {
   return (
     <section className="lista-viagens">
-      <h2>Viagens Populares</h2>
+      <h2>Minhas Viagens</h2>
       <div className="card-grid">
         {destinos.map((dest, index) => (
-          <CardViagens key={index} {...dest} />
+          <CardMinhasViagens key={index} {...dest} />
         ))}
       </div>
     </section>
   );
 }
 
-export default ListaViagens;
+export default MinhasViagens;

@@ -11,6 +11,7 @@ function MenuFiltro() {
         <option>Menos popular</option>
       </select>
       <div>
+      <label className="brasil">Brasil</label>
         <label><input type="checkbox" /> Região Sul</label>
         <label><input type="checkbox" /> Região Sudeste</label>
         <label><input type="checkbox" /> Região Centro-Oeste</label>
