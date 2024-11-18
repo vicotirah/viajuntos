@@ -3,16 +3,19 @@ import Cabecalho from '../../components/layouts/Cabecalho';
 import BarraPesquisa from '../../components/layouts/BarraPesquisa';
 import MenuFiltro from '../../components/layouts/MenuFiltro';
 import ListaViagens from '../../components/layouts/ListaViagens';
+import './Home.css'
 
 
 const Home = () => {
   return (
-    <div>
-      <Cabecalho />
-      <BarraPesquisa />
-      <MenuFiltro />
-      <ListaViagens />
-    </div>
+    <>
+    <Cabecalho />
+        <BarraPesquisa />
+      <div class="home">
+        <MenuFiltro />
+        <ListaViagens />
+      </div>
+    </>
   );
 };
 

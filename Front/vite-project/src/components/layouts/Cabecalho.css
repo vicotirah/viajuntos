@@ -6,6 +6,32 @@
   background-color: #fff;
   color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 75vw;
+}
+
+.menu-lateral {
+  background-color: black;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  left: 0;
+  z-index: 1;
+}
+
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-lateral ul li {
+  padding: 10px;
+}
+
+.menu-lateral ul li a {
+  text-decoration: none;
+  color: white;
 }
 
 .cabecalho-left,
