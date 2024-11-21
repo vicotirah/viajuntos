@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Cabecalho from "../../components/layouts/Cabecalho";
 //import httpClient from "../httpClient";
 import "./NovoRegistro.css"
-export default function NovoRegistro(){
+export default function NovoRegistro() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [nome, setNome] = useState("");
@@ -29,39 +29,42 @@ export default function NovoRegistro(){
   return (
     <>
       <Cabecalho/>
-      <h2>Crie uma conta!</h2>
-      <form>
-        <div class="campo">
-          <label>Email: </label>
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            id="email"
-          />
-        </div>
-        <div class="campo">
-          <label>senha: </label>
-          <input
-            type="senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            id="senha"
-          />
-        </div>
-        <div class="campo">
-          <label>Nome: </label>
-          <input
-            type="text"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            id="nome"
-          />
-        </div>
-        <button type="button" onClick={registerUser}>
-          Submit
-        </button>
-      </form>
+       <h2>Crie uma conta!</h2>
+      <section class="formGeral">
+       
+        <form>
+          <div class="campo">
+            <label>Email: </label>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              id="email"
+            />
+          </div>
+          <div class="campo">
+            <label>senha: </label>
+            <input
+              type="senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              id="senha"
+            />
+          </div>
+          <div class="campo">
+            <label>Nome: </label>
+            <input
+              type="text"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              id="nome"
+            />
+          </div>
+          <button type="button" onClick={registerUser}>
+            Criar conta
+          </button>
+        </form>
+      </section>
     </>
   );
 };
