@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Cabecalho from "../../components/layouts/Cabecalho";
-//import httpClient from "../httpClient";
+//import httpClient from "./httpClient";
 import "./NovoRegistro.css"
 export default function NovoRegistro() {
   const [email, setEmail] = useState("");

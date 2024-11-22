@@ -4,6 +4,7 @@ import PerfilUsuarioPage from './views/pages/PerfilUsuarioPage';
 import PostagemPage from './views/pages/PostagemPage';
 import NovoRegistro from './views/pages/NovoRegistro'
 import Entrada from './views/pages/Entrada';
+import NovoPost from './views/pages/NovoPost'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/postagem" element={<PostagemPage />} />
         <Route path="/registro" element={<NovoRegistro/>}/>
         <Route path="/login" element={<Entrada/>}/>
+        <Route path="/post/novopost" element={<NovoPost/>}/>
       </Routes>
     </Router>
   );
