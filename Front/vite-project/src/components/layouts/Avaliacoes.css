@@ -1,0 +1,28 @@
+.avaliacoes {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333; 
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+}
+
+.avaliacoes p {
+  margin: 10px 0; 
+}
+
+.avaliacoes p:first-child {
+  margin-top: 0; 
+}
+
+.avaliacoes p:last-child {
+  margin-bottom: 0; 
+}
+
+.avaliacoes span {
+  font-weight: bold;
+  color: #ff7f50; 
+}

@@ -1,0 +1,24 @@
+.comentarios {
+  background-color: #fff; 
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.comentarios h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; 
+  margin-bottom: 15px;
+  text-align: center; 
+}
+
+.comentarios .comentario {
+  margin-bottom: 10px; 
+}
+
+.comentarios .comentario:last-child {
+  margin-bottom: 0;
+}
