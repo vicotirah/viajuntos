@@ -93,8 +93,20 @@ TABLES['Avaliacoes'] = ('''
       `security_rating` int(1) NOT NULL,
       `solo_woman_rating` int(1) NOT NULL,
       `hospitality_rating` int(1) NOT NULL,
-      `accessibility_rating` int(1) NOT NULL,                 
+      `accessibility_rating` int(1) NOT NULL,
+      `cuisine_rating` int(1) NOT NULL,                                   
       `content` text NOT NULL, 
+      PRIMARY KEY (`id`),
+      FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+      FOREIGN KEY (`place_id`) REFERENCES `place`(`id`) ON DELETE CASCADE                    
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;''')
+
+TABLES['Comentarios'] = ('''
+      CREATE TABLE `comentarios` (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `place_id` int(16) NOT NULL,                                                
+      `user_id` int(11) NOT NULL,                
+      `comment` varchar(150) NOT NULL,
       PRIMARY KEY (`id`),
       FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
       FOREIGN KEY (`place_id`) REFERENCES `place`(`id`) ON DELETE CASCADE                    

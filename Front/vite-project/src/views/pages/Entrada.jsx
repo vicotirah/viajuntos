@@ -31,10 +31,10 @@ export default function Entrada(){
     <>
       <Cabecalho/>
       <h2>Entre em sua conta!</h2>
-      <form>
+      <form >
         <div class="campo">
           <label>Email: </label>
-          <input
+          <input 
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -42,7 +42,7 @@ export default function Entrada(){
           />
         </div>
         <div class="campo">
-          <label>senha: </label>
+          <label>Senha: </label>
           <input
             type="senha"
             value={senha}
@@ -53,10 +53,10 @@ export default function Entrada(){
         <div class="campo">
           <label>Nome: </label>
           <input
-            type="text"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            id="nome"
+            type="senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            id="senha"
           />
         </div>
         <button type="button" onClick={logInUser}>
