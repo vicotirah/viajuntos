@@ -22,7 +22,7 @@ class Continentes(db.Model):
 class Subcontinentes(db.Model):
     __tablename__ = 'subcontinents'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    continent_id = db.Column(db.Integrer, db.ForeignKey('continents.id'), nullable=False)
+    continent_id = db.Column(db.Integer, db.ForeignKey('continents.id'), nullable=False)
     name = db.Column(db.String(50),  nullable=False)
     def __repr__(self):
         return f'<Subcontinente: {self.name}>'
@@ -30,7 +30,7 @@ class Subcontinentes(db.Model):
 class Country(db.Model):
     __tablename__ = 'country'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    subcontinent_id = db.Column(db.Integrer, db.ForeignKey('subcontinents.id'),nullable=False)
+    subcontinent_id = db.Column(db.Integer, db.ForeignKey('subcontinents.id'),nullable=False)
     name = db.Column(db.String(50),  nullable=False)
     def __repr__(self):
         return f'<País: {self.name}>'
@@ -38,7 +38,7 @@ class Country(db.Model):
 class State(db.Model):
     __tablename__ = 'states'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    country_id = db.Column(db.Integrer, db.ForeignKey('country.id'),nullable=False)
+    country_id = db.Column(db.Integer, db.ForeignKey('country.id'),nullable=False)
     name = db.Column(db.String(50),  nullable=False)
     def __repr__(self):
         return f'<Estado/Província: {self.name}>'
@@ -46,7 +46,7 @@ class State(db.Model):
 class City(db.Model):
     __tablename__ = 'city'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    state_id = db.Column(db.Integrer, db.ForeignKey('states.id'),nullable=False)
+    state_id = db.Column(db.Integer, db.ForeignKey('states.id'),nullable=False)
     name = db.Column(db.String(50),  nullable=False)
     def __repr__(self):
         return f'<Cidade/Povoado: {self.name}>'
@@ -54,7 +54,7 @@ class City(db.Model):
 class Place(db.Model):
     __tablename__ = 'place'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    city_id = db.Column(db.Integrer, db.ForeignKey('city.id'),nullable=False)
+    city_id = db.Column(db.Integer, db.ForeignKey('city.id'),nullable=False)
     name = db.Column(db.String(50),  nullable=False)
     def __repr__(self):
         return f'<Local: {self.name}>'
@@ -68,6 +68,17 @@ class Avaliacoes(db.Model):
     solo_woman_rating = db.Column(db.Integer, nullable=False)
     hospitality_rating = db.Column(db.Integer, nullable=False)
     accessibility_rating = db.Column(db.Integer, nullable=False)
+    cuisine_rating = db.Column(db.Integer, nullable=False)
     content = db.Column(db.Text, nullable=False)
     def __repr__(self):
         return f'<Avaliações {self.content}>'
+    
+class Comentarios(db.Model):
+    __tablename__ = 'comentarios'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    place_id= db.Column(db.Integer, db.ForeignKey('lugares.id'), nullable=False)
+    user_id= db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
+    name = db.Column(db.String(150),  nullable=False)
+    def __repr__(self):
+        return f'<Comentários {self.content}>'
+

@@ -31,6 +31,7 @@ export default function Entrada() {
     <>
       <Cabecalho />
       <h2>Entre em sua conta!</h2>
+
       <section class="formGeral">
         <form>
           <div class="campo">
