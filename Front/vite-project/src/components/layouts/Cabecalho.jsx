@@ -39,6 +39,7 @@ function Cabecalho() {
             <li><a href="/postagem">Postagem</a></li>
             <li><a href="/registro">Novo Registro</a></li>
             <li><a href="/login">Login</a></li>
+            <li><a href="/post/novopost">Nova Postagem</a></li>
           </ul>
         </nav>
       )}
