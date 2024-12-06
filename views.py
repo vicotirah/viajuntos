@@ -1,9 +1,8 @@
-from flask import render_template, request, redirect, session, flash, url_for
+from flask import render_template, request, redirect, session, flash, url_for, jsonify
 from models import *
+from werkzeug.security import generate_password_hash
 from app import app, db
 from helpers import *
-
-
 
 #Home
 @app.route('/')
@@ -19,10 +18,25 @@ def user_register():
     #return render_template('NovoRegistro.jsx')
     pass
 
-@app.route('/register_create', methods=['POST', ])
-def user_create():
-    '''Cria um novo usuário.'''
-    pass
+@app.route("/register_create", methods=["POST"])
+def register_create():
+    email = request.json.get("email")
+    senha = request.json.get("senha")
+    nome = request.json.get("nome")
+
+    if not email or not senha or not nome:
+        return jsonify({"error": "Dados inválidos"}), 400
+
+    user_exists = Usuarios.query.filter_by(email=email).first()
+    if user_exists:
+        return jsonify({"error": "Usuário já existe"}), 409
+
+    hashed_password = bcrypt.generate_password_hash(senha).decode('utf-8')
+    new_user = Usuarios(email=email, username=nome, password_hash=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
+
+    return jsonify({"message": "Usuário criado com sucesso!"}), 201
 
 # Login
 @app.route('/login' )
@@ -36,7 +50,8 @@ def login():
 def login_auth():
     '''Realiza a autenticação do usuário.'''
 
-    '''form = FormularioUsuario(request.form)
+    '''
+    form = FormularioUsuario(request.form)
     usuario = Usuarios.query.filter_by(email=form.email.data).first()
     senha = Usuarios.query.filter_by(senha=form.senha.data)
     if usuario and senha: 

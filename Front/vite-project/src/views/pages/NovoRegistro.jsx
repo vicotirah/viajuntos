@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Cabecalho from "../../components/layouts/Cabecalho";
-//import httpClient from "./httpClient";
-import "./NovoRegistro.css"
+import "./NovoRegistro.css";
+import axios from "axios";
+
 export default function NovoRegistro() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -9,32 +10,31 @@ export default function NovoRegistro() {
 
   const registerUser = async () => {
     try {
-      const resp = await httpClient.post("//localhost:5000/register_create", {
+      const response = await axios.post("http://localhost:5000/register_create", {
         email,
         senha,
         nome,
       });
 
+      alert("Usuário cadastrado com sucesso!");
       window.location.href = "/";
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        alert("Credenciais inválidas");
+      if (error.response?.status === 409) {
+        alert("Usuário já existe.");
       } else {
-        alert("Ocorreu um erro. Tente de novo mais tarde");
-        window.location.href = "/";
+        alert("Erro ao cadastrar usuário. Tente novamente.");
       }
     }
   };
 
   return (
     <>
-      <Cabecalho/>
-       <h2>Crie uma conta!</h2>
-      <section class="formGeral">
-       
+      <Cabecalho />
+      <h2>Crie uma conta!</h2>
+      <section className="formGeral">
         <form>
-          <div class="campo">
-            <label>Email: </label>
+          <div className="campo">
+            <label>Email:</label>
             <input
               type="text"
               value={email}
@@ -42,17 +42,17 @@ export default function NovoRegistro() {
               id="email"
             />
           </div>
-          <div class="campo">
-            <label>senha: </label>
+          <div className="campo">
+            <label>Senha:</label>
             <input
-              type="senha"
+              type="password"
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
               id="senha"
             />
           </div>
-          <div class="campo">
-            <label>Nome: </label>
+          <div className="campo">
+            <label>Nome:</label>
             <input
               type="text"
               value={nome}
@@ -67,5 +67,4 @@ export default function NovoRegistro() {
       </section>
     </>
   );
-};
-
+}
