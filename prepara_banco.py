@@ -6,14 +6,16 @@ try:
       conn = mysql.connector.connect(
             host='127.0.0.1',
             user='root',
-            password='admin',
-      )
+            password='SUASENHA',
+      ) 
 except mysql.connector.Error as err:
       if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print('Existe algo errado no nome de usuário ou senha')
       else:
             print(err)
 
+if 'conn' not in locals():
+    exit("A conexão não foi estabelecida. Verifique suas credenciais e o servidor.")
 cursor = conn.cursor()
 
 cursor.execute("DROP DATABASE IF EXISTS `viajuntos`;")
@@ -26,7 +28,7 @@ TABLES['Users'] = ('''
       CREATE TABLE `users` (
       `id` int(11) NOT NULL AUTO_INCREMENT,
       `username` varchar(25) NOT NULL,
-      `name` varchar(50) NOT NULL, 
+      `nome` varchar(50) NOT NULL, 
       `email` varchar(60) NOT NULL,
       `password_hash` varchar(100) NOT NULL,
       PRIMARY KEY (`id`)

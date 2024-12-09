@@ -3,6 +3,9 @@ from models import *
 from werkzeug.security import generate_password_hash
 from app import app, db
 from helpers import *
+from flask_bcrypt import Bcrypt
+
+bcrypt = Bcrypt()
 
 #Home
 @app.route('/')
@@ -32,36 +35,32 @@ def register_create():
         return jsonify({"error": "Usuário já existe"}), 409
 
     hashed_password = bcrypt.generate_password_hash(senha).decode('utf-8')
-    new_user = Usuarios(email=email, username=nome, password_hash=hashed_password)
+    new_user = Usuarios(nome=nome, email=email, username=nome, password_hash=hashed_password)
     db.session.add(new_user)
     db.session.commit()
 
     return jsonify({"message": "Usuário criado com sucesso!"}), 201
 
 # Login
-@app.route('/login' )
-def login():
-    '''Exibe o formulário de login.'''
-    '''form = FormularioUsuario()
-    return render_template('Entrada.jsx', form=form)'''
-    pass
+from flask import request, jsonify
+from flask_bcrypt import check_password_hash
+from models import Usuarios  # Certifique-se de importar o modelo de usuário
 
-@app.route('/login_auth', methods=['POST', ])
+@app.route("/login_auth", methods=["POST"])
 def login_auth():
-    '''Realiza a autenticação do usuário.'''
+    email = request.json.get("email")
+    senha = request.json.get("senha")
 
-    '''
-    form = FormularioUsuario(request.form)
-    usuario = Usuarios.query.filter_by(email=form.email.data).first()
-    senha = Usuarios.query.filter_by(senha=form.senha.data)
-    if usuario and senha: 
-        session['Usuário logado'] = usuario.username
-        flash(usuario.username + 'logado com sucesso')
-        return redirect('Home.jsx') #ajustar com url_for
-    else:
-        flash('Usuário não logado')
-        return redirect('Entrada.jsx') #ajustar com url_for'''
-    pass
+    if not email or not senha:
+        return jsonify({"error": "Dados inválidos"}), 400
+
+    user = Usuarios.query.filter_by(email=email).first()
+    if not user or not check_password_hash(user.password_hash, senha):
+        return jsonify({"error": "Credenciais inválidas"}), 401
+
+    return jsonify({"message": "Login realizado com sucesso!", "user": user.nome}), 200
+
+
 # Perfil
 @app.route('/profile/<username>' )
 def user_profile():
